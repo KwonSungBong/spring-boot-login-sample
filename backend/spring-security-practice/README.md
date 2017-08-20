@@ -1,0 +1,1 @@
+https://github.com/lynas/spring-security-jwt-rest-stateless
