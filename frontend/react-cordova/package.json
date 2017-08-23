@@ -40,7 +40,10 @@
     "test:coverage:watch": "echo \"Error: `nyc` doesn't support watch mode\" && exit 1",
     "test:watch:coverage": "npm run test:coverage:watch"
   },
-  "dependencies": {},
+  "dependencies": {
+    "axios": "^0.16.2",
+    "redux-saga": "^0.15.6"
+  },
   "devDependencies": {
     "babel-core": "^6.11.4",
     "babel-eslint": "^7.1.1",

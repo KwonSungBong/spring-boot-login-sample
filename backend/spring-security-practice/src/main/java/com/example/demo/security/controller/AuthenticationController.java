@@ -68,4 +68,9 @@ public class AuthenticationController {
         }
     }
 
+    @RequestMapping(value = "test", method = RequestMethod.GET)
+    public ResponseEntity<?> test(){
+        return ResponseEntity.ok("test");
+    }
+
 }

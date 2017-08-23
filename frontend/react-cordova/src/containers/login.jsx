@@ -41,6 +41,7 @@ class LoginComponent extends Component {
       }
     });
   }
+
   render() {
     const { credentials } = this.props;
     const { isMountedAndCreatedByRouter } = this.state;
@@ -48,7 +49,11 @@ class LoginComponent extends Component {
     const hideLogin = (!isMountedAndCreatedByRouter) || checkingToken || loggingIn;
 
     return (
-      <div style={{ position: 'fixed', left: 0, top: 0, width: '100%', height: '100%', textAlign: 'center', backgroundColor: '#F7DF1E', color: 'black' }}>
+      <div>
+        <h1>test</h1>
+        <button onClick={() => this.props.dispatch({type:"LOGIN", data:{username:"lynas", password:"123456"}})}>LOGIN</button>
+      </div>
+      /*<div style={{ position: 'fixed', left: 0, top: 0, width: '100%', height: '100%', textAlign: 'center', backgroundColor: '#F7DF1E', color: 'black' }}>
         <div style={{ position: 'relative', top: '50%', transform: 'translateY(-50%)' }}>
           <div>
             <span className={`${customFont.customFont} ${customFont.customFontJs}`} style={{ fontSize: '200px' }}>
@@ -79,7 +84,7 @@ class LoginComponent extends Component {
             </form>
           </div>
         </div>
-      </div>
+      </div>*/
     );
   }
 }
@@ -111,6 +116,7 @@ if (__DEV__) {
 }
 
 const Login = connect(state => ({ credentials: state.credentials }), dispatch => ({
+  dispatch,
   credentialsActions: bindActionCreators(CredentialsActions, dispatch)
 }))(LoginComponent);
 
