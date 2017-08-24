@@ -10,5 +10,3 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 }
-
-//curl -H "Content-Type: application/json" -X POST -d {\"username\":\"lynas\",\"password\":\"123456\"} http://localhost:8888/auth
