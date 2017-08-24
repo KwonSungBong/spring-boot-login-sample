@@ -9,6 +9,7 @@ let Socket = require('sockjs-client');
 let Stomp = require('stompjs');
 let socket;
 let stompClient;
+const token = auth.getToken();
 const header = {'X-Auth-Token': token};
 
 class TalkAppComponent extends Component {
@@ -21,18 +22,20 @@ class TalkAppComponent extends Component {
   componentDidMount() {
     const socketUrl = "http://localhost:8888/websocket";
     const stompConnect = () => {
-      socket = new Socket(socketUrl);
-      stompClient = Stomp.over(socket);
-      stompClient.debug = null;
-      stompClient.connect({}, function (frame) {
-        console.log('Connected: ' + frame);
-        const url = '/talk/room.list';
-        stompClient.subscribe(url, function (response) {
-          // const url = 'http://' + config.apiHost + ':' + config.apiPort + '/image/download';
-          const responseBody = JSON.parse(response.body);
-          console.log(responseBody);
-        });
-      }, stompReconnect);
+      console.log(Socket);
+      socket = new Socket(socketUrl, null, {transports: ['xhr-streaming'], headers: {'X-Auth-Token': token}});
+      //socket = new Socket(socketUrl);
+      //stompClient = Stomp.over(socket);
+      //stompClient.debug = null;
+      //stompClient.connect({}, function (frame) {
+      //  console.log('Connected: ' + frame);
+      //  const url = '/talk/room.list';
+      //  stompClient.subscribe(url, function (response) {
+      //    // const url = 'http://' + config.apiHost + ':' + config.apiPort + '/image/download';
+      //    const responseBody = JSON.parse(response.body);
+      //    console.log(responseBody);
+      //  });
+      //}, stompReconnect);
     }
 
     const stompReconnect = () => {
