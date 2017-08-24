@@ -1,19 +1,23 @@
-const hint = 'password1';
+import axios from 'axios';
+
+const hint = '비밀번호';
 function pretendLoginRequest(email, pass, cb) {
-  setTimeout(() => {
-    if (pass === hint) {
-      cb({
-        authenticated: true,
-        time: Date.now(),
-        token: Math.random().toString(36).substring(7)
-      });
-    } else {
-      cb({
-        authenticated: false,
-        hint
-      });
-    }
-  }, 500);
+  axios.post('http://localhost:8888/auth', {
+    username: 'lynas',
+    password: '123456'
+  }).then(result => {
+    const token = result.data.token;
+    cb({
+      authenticated: true,
+      time: Date.now(),
+      token: token
+    });
+  }).catch(function (error) {
+    cb({
+      authenticated: false,
+      hint
+    });
+  });
 }
 function pretendTokenRequest(token, cb) {
   setTimeout(() => {
