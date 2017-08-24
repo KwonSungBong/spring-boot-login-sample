@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Data
-public class AppUser {
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,10 +18,10 @@ public class AppUser {
     @Column(name = "authorities")
     private String authorities;
 
-    public AppUser() {
+    public User() {
     }
 
-    public AppUser(String username, String password, String authorities) {
+    public User(String username, String password, String authorities) {
         this.username = username;
         this.password = password;
         this.authorities = authorities;

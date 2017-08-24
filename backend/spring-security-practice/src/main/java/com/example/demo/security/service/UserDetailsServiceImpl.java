@@ -1,8 +1,8 @@
 package com.example.demo.security.service;
 
-import com.example.demo.model.AppUser;
+import com.example.demo.model.User;
 import com.example.demo.security.model.SpringSecurityUser;
-import com.example.demo.service.AppUserService;
+import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.authority.AuthorityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,22 +14,22 @@ import org.springframework.stereotype.Service;
 public class UserDetailsServiceImpl implements UserDetailsService {
 
     @Autowired
-    private AppUserService appUserService;
+    private UserService userService;
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        AppUser appUser = this.appUserService.loadUserByUsername(username);
+        User user = this.userService.loadUserByUsername(username);
 
-        if (appUser == null) {
-            throw new UsernameNotFoundException(String.format("No appUser found with username '%s'.", username));
+        if (user == null) {
+            throw new UsernameNotFoundException(String.format("No User found with username '%s'.", username));
         } else {
             return new SpringSecurityUser(
-                    appUser.getId(),
-                    appUser.getUsername(),
-                    appUser.getPassword(),
+                    user.getId(),
+                    user.getUsername(),
+                    user.getPassword(),
                     null,
                     null,
-                    AuthorityUtils.commaSeparatedStringToAuthorityList(appUser.getAuthorities())
+                    AuthorityUtils.commaSeparatedStringToAuthorityList(user.getAuthorities())
             );
         }
     }
