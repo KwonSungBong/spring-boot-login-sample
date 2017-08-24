@@ -206,6 +206,11 @@ const getWebpackConfig = (options = ({}), privateOptions = ({})) => {
         path.join(rootPath, 'node_modules')
       ]
     },
+    node: {
+      net: 'empty',
+      tls: 'empty',
+      dns: 'empty'
+    },
     externals: []
     .concat(isTest ? nodeExternals() : [])
   });

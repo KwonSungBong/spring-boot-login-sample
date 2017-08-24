@@ -46,7 +46,7 @@ public class Room {
 
     @OneToOne
     @CreatedBy
-    private AppUser createdUser;
+    private User createdUser;
 
     @CreatedDate
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")
@@ -55,7 +55,7 @@ public class Room {
 
     @OneToOne
     @LastModifiedBy
-    private AppUser lastModifiedUser;
+    private User lastModifiedUser;
 
     @LastModifiedDate
     @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTimeAndZone")

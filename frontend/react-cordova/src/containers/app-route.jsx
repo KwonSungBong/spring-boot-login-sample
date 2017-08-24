@@ -6,6 +6,7 @@ import auth from 'src/common/auth.js';
 import * as CredentialsActions from 'src/actions/credentials-actions.js';
 import Login from './login.jsx';
 import TodoApp from './todo-app.jsx';
+import TalkApp from './talk-app.jsx';
 
 class AppRouteComponent extends Component {
   componentWillMount() {
@@ -71,7 +72,7 @@ class AppRouteComponent extends Component {
 
     return (
       <Router history={history}>
-        <Route path="/main" component={TodoApp} onEnter={this.checkAuth} />
+        <Route path="/main" component={TalkApp} onEnter={this.checkAuth} />
         <Route path="/login" component={Login} />
         <Route path="*" onEnter={this.handleRedirect} />
       </Router>
