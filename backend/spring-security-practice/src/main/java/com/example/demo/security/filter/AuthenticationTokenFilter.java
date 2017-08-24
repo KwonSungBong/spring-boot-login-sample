@@ -2,7 +2,7 @@
 
 package com.example.demo.security.filter;
 
-import com.example.demo.AppConstant;
+import com.example.demo.model.AppConstant;
 import com.example.demo.security.TokenUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

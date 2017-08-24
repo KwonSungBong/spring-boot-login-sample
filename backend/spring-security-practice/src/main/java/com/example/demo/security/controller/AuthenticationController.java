@@ -1,6 +1,6 @@
 package com.example.demo.security.controller;
 
-import com.example.demo.AppConstant;
+import com.example.demo.model.AppConstant;
 import com.example.demo.security.TokenUtils;
 import com.example.demo.security.model.AuthenticationRequest;
 import com.example.demo.security.model.AuthenticationResponse;
