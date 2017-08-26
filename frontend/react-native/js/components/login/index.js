@@ -56,6 +56,28 @@ class Login extends Component {
     this.renderInput = this.renderInput.bind(this);
   }
 
+  test() {
+      // https://facebook.github.io/react-native/docs/network.html
+      fetch('http://localhost:8888/auth', {
+          method: 'POST',
+          headers: {
+              'Accept': 'application/json',
+              'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+              username: 'lynas',
+              password: '123456'
+          })
+      })
+      .then((response) => response.json())
+      .then((responseJson) => {
+          console.log(responseJson);
+          return responseJson;
+      })
+      .catch((error) => {
+          console.error("er", error);
+      });
+  }
   setUser(name) {
     this.props.setUser(name);
   }
@@ -100,6 +122,12 @@ class Login extends Component {
                   onPress={() => this.props.navigation.navigate("Home")}
                 >
                   <Text>Login</Text>
+                </Button>
+                <Button
+                    style={styles.btn}
+                    onPress={() => this.test()}
+                >
+                  <Text>Test</Text>
                 </Button>
               </View>
             </Image>
