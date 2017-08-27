@@ -42,7 +42,8 @@
   },
   "dependencies": {
     "axios": "^0.16.2",
-    "redux-saga": "^0.15.6"
+    "redux-saga": "^0.15.6",
+    "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
     "babel-core": "^6.11.4",

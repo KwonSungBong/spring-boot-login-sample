@@ -1,23 +1,40 @@
-import axios from 'axios';
+// import axios from 'axios';
 
 const hint = '비밀번호';
 function pretendLoginRequest(email, pass, cb) {
-  axios.post('http://localhost:8888/auth', {
-    username: 'lynas',
-    password: '123456'
-  }).then(result => {
-    const token = result.data.token;
-    cb({
-      authenticated: true,
-      time: Date.now(),
-      token: token
-    });
-  }).catch(function (error) {
-    cb({
-      authenticated: false,
-      hint
-    });
-  });
+  fetch('http://localhost:8888/auth', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      username: 'lynas',
+      password: '123456',
+    })
+  }).then(function(response) {
+    return response.json()
+  }).then(function(json) {
+    console.log('parsed json', json)
+  }).catch(function(ex) {
+    console.log('parsing failed', ex)
+  })
+
+  // axios.post('http://localhost:8888/auth', {
+  //   username: 'lynas',
+  //   password: '123456'
+  // }).then(result => {
+  //   const token = result.data.token;
+  //   cb({
+  //     authenticated: true,
+  //     time: Date.now(),
+  //     token: token
+  //   });
+  // }).catch(function (error) {
+  //   cb({
+  //     authenticated: false,
+  //     hint
+  //   });
+  // });
 }
 function pretendTokenRequest(token, cb) {
   setTimeout(() => {

@@ -83,7 +83,7 @@ const getWebpackConfig = (options = ({}), privateOptions = ({})) => {
       })
     ] : [])
     .concat(isTest ? [] : new webpack.ProvidePlugin({
-      fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
+      // fetch: 'imports?this=>global!exports?global.fetch!whatwg-fetch'
     }))
     .concat(isWebpackDevServer ? [
       new webpack.HotModuleReplacementPlugin()
