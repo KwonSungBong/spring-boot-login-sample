@@ -1,1 +1,0 @@
-INSERT INTO user (authorities, password, username) VALUES ('ROLE_ADMIN, ROLE_EM PLOYEE, ROLE_MANAGER', '$2a$10$aS/lF2c/9JWPUjDHfJ/zTed1ihGBgfX/7xnGTOM5/lW59X4FHalSi', 'lynas');

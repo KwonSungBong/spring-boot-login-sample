@@ -2,9 +2,13 @@ import axios from 'axios';
 
 const hint = '비밀번호';
 function pretendLoginRequest(email, pass, cb) {
-  axios.post('http://localhost:8888/auth', {
-    username: 'lynas',
-    password: '123456'
+  axios({
+    method: 'post',
+    url: '/api/login',
+    params: {
+      email: 'test@test.co.kr',
+      password: 'test'
+    }
   }).then(result => {
     const token = result.data.token;
     cb({
@@ -18,6 +22,27 @@ function pretendLoginRequest(email, pass, cb) {
       hint
     });
   });
+
+  // axios({
+  //   method: 'post',
+  //   url: '/api/login',
+  //   params: {
+  //     email: 'test@test.co.kr',
+  //     password: 'test'
+  //   }
+  // }).then(result => {
+  //   console.log("ok", result);
+  //   axios({
+  //     method: 'get',
+  //     url: '/api/me'
+  //   }).then(resultme => {
+  //     console.log('me', resultme)
+  //   }).catch(function (error) {
+  //     console.log("error", error)
+  //   });
+  // }).catch(function (error) {
+  //   console.log("error", error)
+  // });
 }
 function pretendTokenRequest(token, cb) {
   setTimeout(() => {

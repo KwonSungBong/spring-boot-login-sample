@@ -15,3 +15,26 @@ spring:
     username: root
     password: password
     driver-class-name: com.mysql.jdbc.Driver
+
+  social:
+    facebook:
+      app-id: 168725713662603
+      app-secret: fdf1fee004df10cd3a00adb949e16e5a
+    kakao:
+      app-id: 5d657efdb44563718081262c440e74e1
+    naver:
+      app-id: n0hdLZkE4kNTYFoiXUOJ
+      app-secret: qbuxIcZQs6
+    google:
+      app-id: 150010817728-rgpsba3l8eu1jqersfmoihaj56jeqpia.apps.googleusercontent.com
+      app-secret: suiek6bK3Ni4HfrIMWSCX9Eb
+
+  session:
+    store-type: none
+
+  management:
+    security:
+      sessions: ALWAYS
+
+remember-me:
+  token-validity-seconds: 2592000 #30일
