@@ -17,6 +17,11 @@ import styles from "./styles";
 
 const background = require("../../../images/shadow.png");
 
+let Socket = require('sockjs-client');
+// let Stomp = require('stompjs');
+// let socket;
+// let stompClient;
+
 const validate = values => {
   const error = {};
   error.email = "";
@@ -56,6 +61,30 @@ class Login extends Component {
     this.renderInput = this.renderInput.bind(this);
   }
 
+  testtest() {
+      const socketUrl = "http://localhost:8888/websocket";
+      const stompConnect = () => {
+          console.log(Socket);
+          socket = new Socket(socketUrl);
+          // stompClient = Stomp.over(socket);
+          // // stompClient.debug = null;
+          // stompClient.connect({}, function (frame) {
+          //     console.log('Connected: ' + frame);
+          //     const url = '/talk/room.list';
+          //     stompClient.subscribe(url, function (response) {
+          //         // const url = 'http://' + config.apiHost + ':' + config.apiPort + '/image/download';
+          //         const responseBody = JSON.parse(response.body);
+          //         console.log(responseBody);
+          //     });
+          // }, stompReconnect);
+      }
+
+      const stompReconnect = () => {
+          setTimeout(stompConnect, 1000);
+      }
+
+      stompConnect();
+  }
   test() {
       // https://facebook.github.io/react-native/docs/network.html
       fetch('http://localhost:8888/auth', {
@@ -129,6 +158,12 @@ class Login extends Component {
                 >
                   <Text>Test</Text>
                 </Button>
+                  <Button
+                      style={styles.btn}
+                      onPress={() => this.testtest()}
+                  >
+                      <Text>TestTest</Text>
+                  </Button>
               </View>
             </Image>
           </Content>
