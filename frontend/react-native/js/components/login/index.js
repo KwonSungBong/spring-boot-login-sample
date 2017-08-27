@@ -58,16 +58,20 @@ class Login extends Component {
 
     test() {
         // https://facebook.github.io/react-native/docs/network.html
-        fetch('http://localhost:8888/auth', {
+        fetch('http://localhost:8888/login', {
             method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                username: 'lynas',
-                password: '123456'
-            })
+            headers: new Headers({
+                'Content-Type': 'application/x-www-form-urlencoded', // <-- Specifying the Content-Type
+            }),
+            body: "email=test@test.co.kr&password=test" // <-- Post parameters
+            // headers: {
+            //     'Accept': 'application/json',
+            //     'Content-Type': 'application/json',
+            // },
+            // body: JSON.stringify({
+            //     email: 'test@test.co.kr',
+            //     password: 'test'
+            // })
         })
             .then((response) => response.json())
             .then((responseJson) => {
