@@ -75,6 +75,17 @@ class Login extends Component {
         })
             .then((response) => response.json())
             .then((responseJson) => {
+                fetch('http://localhost:8888/me', {
+                    method: 'GET',
+                })
+                    .then((response) => response.json())
+                    .then((responseJson) => {
+                        console.log(responseJson);
+                        return responseJson;
+                    })
+                    .catch((error) => {
+                        console.error("er", error);
+                    });
                 console.log(responseJson);
                 return responseJson;
             })
